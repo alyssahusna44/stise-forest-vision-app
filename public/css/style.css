@@ -1,0 +1,878 @@
+/* public/css/style.css */
+
+/* === Forest Sustainability Theme Variables === */
+:root {
+    --forest-green: #2e7d32;
+    --dark-green: #1b5e20;
+    --light-green: #a5d6a7;
+    --leaf-green: #81c784;
+    --earth-brown: #6d4c41;
+    --bg-light: #f0f4f1;
+    --text-dark: #2e2e2e;
+    --text-light: #ffffff;
+    --border-color-light: #e0e0e0;
+    --border-color-medium: #c0c0c0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+
+    --message-success-bg: #d4edda;
+    --message-success-color: #155724;
+    --message-error-bg: #f8d7da;
+    --message-error-color: #721c24;
+    --message-info-bg: #d1ecf1;
+    --message-info-color: #0c5460;
+    --warning-color: #856404; /* Dark yellow for warnings */
+}
+
+/* === Global Styles === */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background-image: url('../image/tree-pattern.jpg'); /* Adjust the path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+    color: var(--forest-green);
+    margin-bottom: 0.5em;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.home-content h2, .forest-generation h2 {
+    text-align: left;
+}
+
+p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+a {
+    color: var(--forest-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--dark-green);
+}
+
+input, select, textarea, button {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 1em;
+}
+
+/* === Header Navigation === */
+.header-nav {
+    background-color: var(--forest-green);
+    color: var(--text-light);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures vertical alignment of logo and nav */
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    margin-bottom: 25px;
+}
+
+.header-nav .logo {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--text-light);
+    text-align: left;
+    /* Add line-height to ensure vertical centering consistency */
+    line-height: 1; /* Match line-height of nav links for better alignment */
+}
+
+.header-nav nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Crucial for vertical alignment of list items */
+}
+
+.header-nav nav ul li {
+    margin-left: 25px;
+    /* Remove padding or height from li to let a control the sizing */
+}
+
+.header-nav nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.05em;
+    padding: 8px 15px; /* Consistent padding for all nav links */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* Use inline-flex for better vertical alignment */
+    align-items: center; /* Center content vertically within the link */
+    justify-content: center; /* Center content horizontally */
+    height: 100%; /* Ensure it takes full height of li if li has height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.header-nav nav ul li a:hover,
+.header-nav nav ul li a.active {
+    background-color: var(--dark-green);
+    transform: translateY(-2px);
+}
+
+/* === Container === */
+.container {
+    max-width: 1200px;
+    margin: 25px auto;
+    background: var(--text-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px var(--shadow-light);
+    border-left: 6px solid var(--forest-green);
+}
+
+/* === Summary Grid === */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.summary-card {
+    background-color: var(--light-green);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--leaf-green);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h3 {
+    margin-top: 0;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+.summary-card p {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+/* === Responsive Table Wrapper === */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+/* === Tables === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    font-size: 0.95em;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid var(--border-color-medium);
+    padding: 12px 15px;
+    text-align: left;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+th {
+    background-color: var(--dark-green);
+    color: var(--text-light);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tr:hover {
+    background-color: var(--light-green);
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+/* === Forms and Buttons === */
+button,
+.pagination a,
+.filter-form button {
+    background-color: var(--forest-green);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    /* Ensure consistent height/alignment with flex */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+button:hover,
+.pagination a:hover,
+.filter-form button:hover {
+    background-color: var(--dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: var(--text-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form label {
+    font-weight: bold;
+    color: var(--dark-green);
+    text-align: right;
+    flex-basis: 80px;
+    padding-right: 5px;
+}
+
+.filter-form select,
+.filter-form input[type="number"],
+.filter-form input[type="text"] {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color-light);
+    border-radius: 6px;
+    font-size: 1em;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+/* Styles for Simulation Controls */
+.simulation-controls {
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.simulation-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.display-selection-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.display-selection-form select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--forest-green);
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    font-size: 1em;
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C197.973L146.2%2C57.173L5.4%2C197.973H287z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
+}
+
+.display-selection-form select:focus {
+    outline: none;
+    border-color: var(--dark-green);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+/* Message Styles */
+.message-success, .message-error, .message-info {
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.message-success {
+    background-color: var(--message-success-bg);
+    color: var(--message-success-color);
+    border: 1px solid #c3e6cb;
+}
+
+.message-error {
+    background-color: var(--message-error-bg);
+    color: var(--message-error-color);
+    border: 1px solid #f5c6cb;
+}
+
+.message-info {
+    background-color: var(--message-info-bg);
+    color: var(--message-info-color);
+    border: 1px solid #bee5eb;
+}
+
+.warning-text {
+    color: var(--warning-color);
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 5px;
+}
+td {
+    vertical-align: top;
+}
+td strong {
+    color: var(--dark-green);
+}
+
+/* === Pagination (Placeholder) === */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 10px 14px;
+    margin: 0 6px;
+    border: 1px solid var(--forest-green);
+    color: var(--forest-green);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 0.95em;
+}
+
+.pagination .current-page {
+    background-color: var(--forest-green);
+    color: var(--text-light);
+    font-weight: bold;
+    border-color: var(--dark-green);
+}
+
+/* === Home Page Content === */
+.home-intro {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.home-intro p {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 25px auto;
+    line-height: 1.7;
+    color: var(--dark-green);
+    text-align: center;
+}
+
+.home-content {
+    max-width: 1200px; /* Increased max-width for content to accommodate charts better */
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.home-content h2 {
+    margin-top: 35px;
+    color: var(--forest-green);
+    border-bottom: 2px solid var(--leaf-green);
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+.home-content p,
+.home-content ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.home-content ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+.home-content ul li {
+    margin-bottom: 0.5em;
+}
+
+/* === Chart-Specific Styles === */
+
+/* Wrapper for all chart groups (histograms and scatter plots) */
+.charts-wrapper {
+    display: flex;
+    flex-direction: column; /* Stacks histogram group above scatterplot group */
+    gap: 40px; /* Space between chart groups */
+    margin-top: 30px;
+    padding: 0 10px; /* Add some horizontal padding inside home-content */
+    box-sizing: border-box;
+}
+
+/* Group for histograms and scatter plots, allowing side-by-side display */
+.chart-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows charts within the group to wrap to next line */
+    gap: 20px; /* Space between individual charts within a group */
+    justify-content: center; /* Centers charts horizontally */
+    width: 100%; /* Takes full width of charts-wrapper */
+}
+
+/* Header for each chart group */
+.chart-group h3 {
+    width: 100%; /* Takes full width of the group */
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-green); /* Using theme variable */
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 10px;
+}
+
+/* Container for each Chart.js canvas */
+.chart-section {
+    flex: 1 1 calc(50% - 10px); /* Distributes space for two charts per row with 20px gap */
+    min-width: 300px; /* Minimum width before charts wrap to the next line */
+    background-color: var(--text-light);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    box-sizing: border-box;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%; /* Fills the chart-section */
+    max-width: 900px; /* Aligned with home-content max-width if possible */
+    height: 500px; /* Increased height for better visibility of spatial map */
+    margin: 0 auto; /* Centers the canvas within its section */
+    overflow: hidden; /* Ensures chart elements don't spill out */
+    border: 1px solid var(--border-color-medium); /* Added border for clarity */
+    box-shadow: 0 2px 8px var(--shadow-light); /* Added shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Error message styling */
+.chart-error-message {
+    display: none; /* Hidden by default, shown by JavaScript on error */
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid var(--message-error-bg);
+    background-color: var(--message-error-bg);
+    color: var(--message-error-color);
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* === Footer === */
+.footer {
+    background-color: var(--dark-green);
+    color: var(--text-light);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9em;
+    margin-top: 40px;
+    box-shadow: 0 -3px 8px var(--shadow-medium);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    text-align: left;
+}
+
+.footer-section h4 {
+    color: var(--leaf-green);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 8px;
+    text-align: left;
+}
+
+.footer-section p,
+.footer-section address {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.8em;
+    text-align: left;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--leaf-green);
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    justify-content: left;
+}
+
+.social-icons a img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover img {
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85em;
+    text-align: center;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+    .header-nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .header-nav nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-nav nav ul li {
+        margin: 8px 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+
+    .home-content h2, .forest-generation h2 {
+        text-align: center;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+
+    .filter-form label {
+        text-align: left;
+        flex-basis: auto;
+        padding-right: 0;
+    }
+
+    .filter-form select,
+    .filter-form input[type="number"],
+    .filter-form input[type="text"] {
+        max-width: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        min-width: unset;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-section h4,
+    .footer-section p,
+    .footer-section ul,
+    .social-icons {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .simulation-buttons {
+        flex-direction: column;
+    }
+    .simulation-buttons form {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .display-selection-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    /* Responsive adjustments for charts on smaller screens */
+    .charts-wrapper {
+        padding: 0 0px; /* Remove horizontal padding on very small screens */
+    }
+    .chart-group {
+        flex-direction: column; /* Stack chart groups on top of each other */
+        align-items: center;
+    }
+    .chart-section {
+        flex: 1 1 95%; /* Take almost full width when stacked */
+        max-width: 600px; /* Max width when stacked for readability */
+    }
+    .chart-container {
+        height: 300px; /* Smaller height for charts on medium screens */
+    }
+    .simulation-controls {
+        padding: 10px;
+    }
+    .display-selection-form select {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 0;
+    }
+    .header-nav .logo a {
+        font-size: 1.5em;
+    }
+    .header-nav nav ul li a {
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .chart-container {
+        height: 250px; /* Even smaller height for charts on very small screens */
+    }
+    .charts-wrapper {
+        gap: 25px; /* Reduce gap between chart groups */
+    }
+    .chart-section {
+        padding: 15px;
+    }
+}
+
+/* Add these to your style.css or adjust existing ones */
+
+.app-explanation-section,
+.sustainability-logic-section,
+.contribution-section {
+    margin-bottom: 30px; /* Space between main sections */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.feature-subsection,
+.logic-insight-subsection {
+    margin-bottom: 20px; /* Space between sub-sections */
+    padding-left: 15px; /* Indent sub-section content */
+    border-left: 3px solid #4CAF50; /* A green line for visual separation */
+}
+
+.feature-subsection h3,
+.logic-insight-subsection h3 {
+    color: #333; /* Darker text for headings */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.app-explanation-section h2,
+.sustainability-logic-section h2 {
+    color: #2c3e50; /* A strong dark blue for main section titles */
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee; /* Subtle separator */
+}
+
+/* Enhancements for lists */
+.feature-subsection ul,
+.logic-insight-subsection ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.feature-subsection li,
+.logic-insight-subsection li {
+    margin-bottom: 8px;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    /* Removed display: inline-block here, it's implicitly handled by parent flex item */
+}
+
+/* Dropdown button (the "Visualisation ▼" text) */
+.dropbtn {
+    /* Kept existing styles */
+    display: inline-flex; /* Changed from 'block' to 'inline-flex' for better alignment */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content if space allows */
+    /* Ensure padding is identical to .header-nav nav ul li a */
+    padding: 8px 15px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    white-space: nowrap; /* Prevents text from wrapping */
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.05em; /* Match nav link font size */
+    color: var(--text-light); /* Ensure text color is consistent */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none; /* Keep this to hide by default */
+    position: absolute;
+    background-color: #333;
+    min-width: 250px; /* Increased min-width for more space */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    /* Aligned to the left edge of the dropbtn */
+    left: 0;
+    /* Position slightly below the button */
+    top: calc(100% + 5px); /* Adjusted to be 5px below the button */
+    overflow: hidden; /* Ensures border-radius applies to children */
+}
+
+/* New rule: Show the dropdown content when the 'show' class is present on the dropdown container */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 15px 20px; /* Increased padding for easier clicking */
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--dark-green); /* Use theme variable for consistency */
+}
+
+/* Optional: Adjust spacing for nav items */
+nav ul li {
+    margin-left: 25px; /* Space between main nav items - Kept consistent */
+}
+
+/* Ensure the main container doesn't overflow the chart */
+/* These styles were already good for the chart-container for the new spatial_visualisation.php */
+/* You might want to remove the redundant definition if you only have one .chart-container class */
+/* Or, keep this for a general rule and specific override for spatial_visualisation.php if needed */
+/* Removed the old .chart-container definition from the bottom to use the one from Chart-Specific Styles */
+/* .chart-container {
+    max-width: 90%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+} */
+
+.chart-info {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+    text-align: center;
+}
